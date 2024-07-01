@@ -115,7 +115,7 @@ idfx_check_esptool() {
     return $IDFX_FAIL
   fi
 
-  if [[ $(python.exe -c 'import pkgutil; print(1 if pkgutil.find_loader("esptool") else 0)') != '1'* ]]; then
+  if [[ $(python.exe -c 'import importlib.util; print(1 if importlib.util.find_spec("esptool") else 0)') != '1'* ]]; then
     idfx_err 'Python package "esptool" needs to be installed on the Windows.'
     read -p 'Would you like to install it now (y/n): ' answer
 
@@ -143,7 +143,7 @@ idfx_check_esp_idf_monitor() {
     return $IDFX_FAIL
   fi
 
-  if [[ $(python.exe -c 'import pkgutil; print(1 if pkgutil.find_loader("esp_idf_monitor") else 0)') != '1'* ]]; then
+  if [[ $(python.exe -c 'import importlib.util; print(1 if importlib.util.find_spec("esp_idf_monitor") else 0)') != '1'* ]]; then
     idfx_err 'Python package "esp_idf_monitor" needs to be installed on the Windows.'
     read -p 'Would you like to install it now (y/n): ' answer
 
